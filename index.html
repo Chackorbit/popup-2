@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popup-2</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f3f3f3;
+      }
+
+      .popup {
+        max-width: 720px;
+        width: 100%;
+        background: white;
+        border: 2px solid #d4d4d4;
+        border-radius: 20px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        margin: 80px auto;
+      }
+
+      .popup-header {
+        position: relative;
+        background: linear-gradient(
+            227.12deg,
+            #e4b46b -167.64%,
+            #fccf7a -103.24%,
+            #e8b96e -37.22%,
+            #d4a162 20.75%,
+            #b98352 83.55%
+          ),
+          radial-gradient(
+            30.22% 325.95% at 49.94% 65.82%,
+            rgba(118, 70, 16, 0.91) 0%,
+            rgba(206, 154, 95, 0.91) 100%
+          );
+        color: white;
+        padding: 15px 54px;
+        font-size: 18px;
+        border-radius: 20px 20px 0 0;
+        text-align: left;
+      }
+
+      .popup-header h2 {
+        max-width: 404px;
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 38px;
+        margin-bottom: 8px;
+      }
+      .popup-header p {
+        max-width: 404px;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+      }
+
+      .popup-header img {
+        position: absolute;
+        right: 38px;
+        bottom: -10px;
+        width: 231px;
+      }
+
+      .popup-header.mobile {
+        display: none;
+      }
+
+      .header-title.mobile {
+        display: none;
+      }
+      .header-description.mobile {
+        display: none;
+      }
+
+      .popup-table {
+        width: calc(100% - 60px);
+        border-collapse: separate;
+        border-spacing: 0;
+        margin: 20px auto;
+        border: 1px solid #cbcbcb;
+        border-radius: 3px;
+        overflow: hidden;
+      }
+      .popup-table td {
+        padding: 16px 24px;
+        font-size: 14px;
+        line-height: 22px;
+        font-weight: 600;
+        text-align: left;
+        word-break: break-word;
+      }
+
+      .popup-table tr:first-child td:first-child {
+        border-top-left-radius: 3px;
+        border-bottom: 1px solid #cbcbcb;
+        border-right: 1px solid #cbcbcb;
+      }
+      .popup-table tr:nth-child(2) td:first-child {
+        border-bottom: 1px solid #cbcbcb;
+        border-right: 1px solid #cbcbcb;
+      }
+      .popup-table tr:nth-child(2) td:nth-child(2) {
+        border-bottom: 1px solid #cbcbcb;
+      }
+      .popup-table tr:first-child td:last-child {
+        border-top-right-radius: 3px;
+        border-bottom: 1px solid #cbcbcb;
+      }
+      .popup-table tr:last-child td:first-child {
+        border-bottom-left-radius: 3px;
+        border-right: 1px solid #cbcbcb;
+      }
+      .popup-table tr:last-child td:last-child {
+        border-bottom-right-radius: 3px;
+      }
+
+      .second-cell {
+        max-width: 195px;
+        color: #626262;
+      }
+
+      .popup-footer {
+        padding-bottom: 15px;
+      }
+      .popup-footer button {
+        background: linear-gradient(
+          227.12deg,
+          #e4b46b -167.64%,
+          #fccf7a -103.24%,
+          #e8b96e -37.22%,
+          #d4a162 20.75%,
+          #b98352 83.55%
+        );
+        color: #ffffff;
+        border: none;
+        padding: 13px 75px;
+        border-radius: 10px;
+        font-size: 16px;
+        line-height: 24px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      .popup-footer p {
+        font-size: 11px;
+        line-height: 22px;
+        margin-top: 8px;
+        color: #888;
+      }
+
+      .close-btn {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: -30px;
+        right: 16px;
+        cursor: pointer;
+        color: #818181;
+        background: none;
+        border: none;
+        z-index: 100;
+      }
+
+      @media screen and (max-width: 768px) {
+        .popup {
+          max-width: 355px;
+          width: 90%;
+          margin: 40px auto;
+        }
+        .close-btn {
+          right: 0;
+        }
+        .popup-header:not(.mobile) {
+          display: none;
+        }
+        .popup-header.mobile {
+          display: block;
+          height: 85px;
+
+          background: linear-gradient(
+              227.12deg,
+              #e4b46b -167.64%,
+              #fccf7a -103.24%,
+              #e8b96e -37.22%,
+              #d4a162 20.75%,
+              #b98352 83.55%
+            ),
+            radial-gradient(
+              30.22% 325.95% at 49.94% 65.82%,
+              rgba(118, 70, 16, 0.91) 0%,
+              rgba(206, 154, 95, 0.91) 100%
+            );
+          border-radius: 20px 20px 0 0;
+          padding: 20px;
+          text-align: center;
+          position: relative;
+        }
+
+        .popup-header.mobile img {
+          width: 250px;
+          position: absolute;
+          bottom: -32px;
+          display: block;
+          margin: 0 auto;
+        }
+
+        .header-title.mobile {
+          display: block;
+          font-size: 24px;
+          font-weight: 700;
+          margin: 10px auto;
+          margin-top: 40px;
+          max-width: 90%;
+          line-height: 30px;
+        }
+        .header-description.mobile {
+          display: block;
+          font-size: 14px;
+          font-weight: 400;
+          color: #626262;
+          max-width: 90%;
+          margin: 0 auto 10px auto;
+          line-height: 20px;
+        }
+
+        .popup-table {
+          width: 90%;
+        }
+        .popup-table td {
+          padding: 12px 9px;
+          padding-left: 14px;
+          font-size: 14px;
+        }
+
+        .second-cell {
+          max-width: 115px;
+          width: 115px;
+        }
+        .popup-footer button {
+          padding: 10px 50px;
+          font-size: 14px;
+        }
+        .popup-footer p {
+          font-size: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="popup">
+      <button class="close-btn">
+        <img
+          src="https://i.ibb.co/GDyyV2q/Group-897468920.png"
+          alt="Group-897468920"
+          width="20"
+          height="20"
+        />
+      </button>
+
+      <div class="popup-header">
+        <h2>Top company earning to watch *today!</h2>
+        <p>Follow stock Market volatility!</p>
+        <img
+          src="https://i.ibb.co/hFGGYGm8/Group-897468924.png"
+          alt="Group-897468924"
+        />
+      </div>
+
+      <div class="popup-header mobile">
+        <img
+          src="https://i.ibb.co/zTKQD4hv/Group-897468926.png"
+          alt="Group-897468926"
+        />
+      </div>
+      <h2 class="header-title mobile">Top company earning to watch *today!</h2>
+      <p class="header-description mobile">Follow stock Market volatility!</p>
+
+      <table class="popup-table">
+        <tr>
+          <td>German Unemployment Change (Dec)</td>
+          <td class="second-cell">Mar 03, 10:55 GMT +2</td>
+        </tr>
+        <tr>
+          <td>U.K. Manufacturing Purchasing Managers Index (PMI)</td>
+          <td class="second-cell">Mar 03, 11:30 GMT +2</td>
+        </tr>
+        <tr>
+          <td>Germany Consumer Price Index (CPI) YoY</td>
+          <td class="second-cell">Mar 03, 15:00 GMT +2</td>
+        </tr>
+      </table>
+
+      <div class="popup-footer">
+        <button class="cta-btn">Start Trading</button>
+        <p>*Date/Hour may change</p>
+      </div>
+    </div>
+
+    <script>
+      document.querySelectorAll(".close-btn").forEach((btn) => {
+        btn.onclick = () => {
+          if (parent.$solitics) {
+            parent.$solitics.hidePopup();
+          }
+        };
+      });
+      document.querySelector(".cta-btn").onclick = () => {
+        if (parent.$solitics) {
+          const customFields = { message: "validation_page" };
+          parent.$solitics.emit("VALIDATE_EMAIL", 0, customFields);
+          parent.$solitics.hidePopup();
+        }
+      };
+    </script>
+  </body>
+</html>
